@@ -50,9 +50,9 @@ public class Etudiant implements Serializable{
 	String email;
 	String nom;
 	String prenom;
-	//@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	//@JsonBackReference
-	//Classe classe;
+	Classe classe;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant")
 	@JsonManagedReference
 	@ToString.Exclude

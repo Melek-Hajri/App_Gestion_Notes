@@ -6,17 +6,26 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Note;
 import com.example.demo.repository.INoteRepository;
 
 @Service
-public class INoteServImp implements INoteServ{
+public class NoteServImp implements INoteServ{
 	@Autowired
 	INoteRepository noteRepo;
 	
 	@Override
-	public void ajouter_NOTE (Note note) {
-		Note notes =noteRepo.save(note);
+	public Note ajouter_NOTE (Note note) {
+		return (Note) noteRepo.save(note);
+	}
+	@Override
+	public List<Note> addlistNotes(List<Note> notes){
+		return (List<Note>) noteRepo.saveAll(notes);
+	}
+	@Override
+	public Note chercher_Note(Long id) {
+		return noteRepo.findById(id).get();
 	}
 	@Override
 	public void supprimer_NOTE(Long id) {
@@ -40,6 +49,11 @@ public class INoteServImp implements INoteServ{
         } else {
             // Handle the case where the student with the given id does not exist
         }
+	}
+	@Override
+	public List<Note> afficher_Note_ETDCLASSE(Long idEtd, Long idClasse){
+		List<Note> notes = (List<Note>) noteRepo.findByEtdMatiere(idEtd, idClasse);
+		return notes;
 	}
 
 }
