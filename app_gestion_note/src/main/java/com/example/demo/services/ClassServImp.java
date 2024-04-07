@@ -41,7 +41,6 @@ private ISpecialiteRepository specrep;
 		Classe Cl=classerep.findById(idclasse).get();
 		Cl.setNomClasse(c.getNomClasse());
 		Cl.setNiveauClasse(c.getNiveauClasse());
-  
 		return classerep.save(Cl);
 	}
 
@@ -71,5 +70,44 @@ private ISpecialiteRepository specrep;
 		CL.addSpecialite(sp);
 		return classerep.save(CL);
 	}
+	// Méthode pour ajouter un module à une classe
+    public Classe addModuleToClasse(Long classeId, Module module) {
+        Classe cl = classerep.findById(classeId).get();
+         cl.addModule(module);
+         return classerep.save(cl);
+       
+    }
+
+    // Méthode pour supprimer un module d'une classe
+    public Classe removeModuleFromClasse(Long classeId, Module module) {
+    	 Classe cl = classerep.findById(classeId).get();
+         cl.removeModule(module);
+           return classerep.save(cl);
+       
+    }
+ // Méthode pour ajouter une spécialité à une classe
+    public Classe addSpecialiteToClasse(Long classeId, Specialite specialite) {
+        Classe classe = classerep.findById(classeId).orElse(null);
+        if (classe != null) {
+            classe.addSpecialite(specialite);
+            return classerep.save(classe);
+        } else {
+          
+            return null;
+        }
+    }
+
+    // Méthode pour supprimer une spécialité d'une classe
+    public Classe removeSpecialiteFromClasse(Long classeId, Specialite specialite) {
+        Classe classe = classerep.findById(classeId).orElse(null);
+        if (classe != null) {
+            classe.removespecialite(specialite);
+            return classerep.save(classe);
+        } else {
+           
+            return null;
+        }
+    }
+
 
 }

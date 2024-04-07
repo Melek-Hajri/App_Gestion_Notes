@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -29,11 +30,14 @@ public class Module implements Serializable{
     private Long idModule;
 	private String nomModule;
 	private int CoifModule;
+	
 	@OneToMany(mappedBy = "M")
-	@JsonManagedReference
+	@JsonIgnore
 	@ToString.Exclude
 	private List<Matiere> listeMatieres;
+	
+	
 	@ManyToOne
-	@JsonBackReference
+	@JsonIgnore
 	private Classe C;
 }
