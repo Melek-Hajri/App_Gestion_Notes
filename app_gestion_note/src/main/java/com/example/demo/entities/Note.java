@@ -38,7 +38,9 @@ public class Note implements Serializable{
 	Long id;
 	@Enumerated(EnumType.STRING)
 	TypeNote type;
-	String matiere;
+	//@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//@JsonBackReference
+	//Matiere matiere;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonBackReference
 	Etudiant etudiant;

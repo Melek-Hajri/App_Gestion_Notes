@@ -8,4 +8,5 @@ public interface IEtudiantServ {
 	public void ajouter_ETD (Etudiant etd);
 	public void supprimer_ETD(Long id);
 	public List<Etudiant> afficher_ETD();
+	public void modifier_ETD(Long id, Etudiant updatedEtd);
 }
