@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Classe;
+import com.example.demo.entities.Matiere;
 import com.example.demo.entities.Module;
+import com.example.demo.entities.Note;
 import com.example.demo.repository.IClasseRepository;
+import com.example.demo.repository.IMatiereRepository;
 import com.example.demo.repository.IModuleRepository;
 
 @Service
@@ -16,6 +19,8 @@ public class ModuleServImp implements IModuleServ{
 	private IModuleRepository modRep;
 	@Autowired
 	private IClasseRepository classerep;
+	@Autowired
+	private IMatiereRepository matiereRepo;
 
 	@Override
 	public Module addModule(Module u) {
@@ -47,6 +52,8 @@ public class ModuleServImp implements IModuleServ{
 
 	@Override
 	public void DeleteModule(Long id) {
+		for(Matiere m: matiereRepo.findByModule(id))
+			matiereRepo.deleteById(m.getIdMatiere());
 		modRep.deleteById(id);
 		
 	}

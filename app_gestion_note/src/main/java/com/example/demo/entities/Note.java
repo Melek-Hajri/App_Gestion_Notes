@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -38,10 +39,12 @@ public class Note implements Serializable{
 	Long id;
 	@Enumerated(EnumType.STRING)
 	TypeNote type;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	float note;
+	@ManyToOne(fetch = FetchType.EAGER)
 	//@JsonBackReference
 	Matiere matiere;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties("notes")
 	@JsonBackReference
 	Etudiant etudiant;
 }

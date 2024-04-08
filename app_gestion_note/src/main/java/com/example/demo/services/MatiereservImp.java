@@ -8,16 +8,20 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entities.Classe;
 import com.example.demo.entities.Matiere;
 import com.example.demo.entities.Module;
+import com.example.demo.entities.Note;
 import com.example.demo.entities.Specialite;
 import com.example.demo.repository.IMatiereRepository;
 import com.example.demo.repository.IModuleRepository;
+import com.example.demo.repository.INoteRepository;
 
 @Service
 public class MatiereservImp  implements IMatiereServ{
 @Autowired
 private IMatiereRepository matRep;
 @Autowired
-private IModuleRepository modrep;	
+private IModuleRepository modrep;
+@Autowired
+private INoteRepository noteRepo;
 
 	@Override
 	public Matiere addMatiere(Matiere u) {
@@ -36,6 +40,8 @@ private IModuleRepository modrep;
 	}
 	@Override
 	public void DeleteMatiere(Long id) {
+		for(Note n: noteRepo.findByMatiere(id))
+			noteRepo.deleteById(n.getId());
 		matRep.deleteById(id);
 		
 	}

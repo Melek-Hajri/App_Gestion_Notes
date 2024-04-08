@@ -14,4 +14,5 @@ public interface INoteServ {
 	public List<Note> afficher_NOTE();
 	public void modifier_NOTE(Long id, Note updatedNote);
 	public List<Note> afficher_Note_ETDCLASSE(Long idEtd, Long idClasse);
+	public List<Note> NotesByEtd(Long idEtd);
 }

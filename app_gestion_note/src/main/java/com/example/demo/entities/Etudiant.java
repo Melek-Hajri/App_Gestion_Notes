@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AccessLevel;
@@ -50,11 +51,12 @@ public class Etudiant implements Serializable{
 	String email;
 	String nom;
 	String prenom;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	//@JsonBackReference
 	Classe classe;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant")
-	@JsonManagedReference
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnoreProperties("etudiant")
+	//@JsonManagedReference
 	@ToString.Exclude
 	Set <Note> notes;
 	

@@ -11,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.entities.Classe;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Module;
+import com.example.demo.entities.Note;
 import com.example.demo.repository.IClasseRepository;
 import com.example.demo.repository.IEtudiantRepository;
+import com.example.demo.repository.INoteRepository;
 @Transactional
 @Service
 public class EtudiantServImp implements IEtudiantServ{
@@ -20,6 +22,8 @@ public class EtudiantServImp implements IEtudiantServ{
 	IEtudiantRepository etudiantRepo;
 	@Autowired
 	IClasseRepository classeRepo;
+	@Autowired
+	INoteRepository noteRepo;
 	
 	@Override
 	public Etudiant ajouter_ETD(Etudiant etd) {
@@ -36,6 +40,8 @@ public class EtudiantServImp implements IEtudiantServ{
 	}
 	@Override
 	public void supprimer_ETD(Long id) {
+		for(Note n: noteRepo.findByEtd(id))
+			noteRepo.deleteById(n.getId());
 		etudiantRepo.deleteById(id);
 	}
 
