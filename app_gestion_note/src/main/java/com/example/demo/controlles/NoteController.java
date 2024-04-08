@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.Note;
 import com.example.demo.services.INoteServ;
+import com.example.demo.services.NoteServImp;
 
 @RestController
 public class NoteController {
     @Autowired
-    private INoteServ noteServ;
+    private NoteServImp noteServ;
 
     @PutMapping(value = "/addNote")
     public Note addNote(@RequestBody Note note) {
