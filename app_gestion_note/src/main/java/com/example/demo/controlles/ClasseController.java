@@ -20,12 +20,12 @@ public class ClasseController {
 	@Autowired
 	private ClassServImp classeserv;
 	@PostMapping(value = "/addclasse")
-	public Classe addUser(@RequestBody Classe u) {
+	public Classe addClasse(@RequestBody Classe u) {
 			return classeserv.addClasse(u);
 		
 	}
 	@PostMapping(value = "/addlistclasse")
-	public List<Classe> addUser(@RequestBody List<Classe> u) {
+	public List<Classe> addListClasses(@RequestBody List<Classe> u) {
 			return classeserv.addlistclasses(u);
 		
 	}
