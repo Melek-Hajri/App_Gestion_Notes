@@ -14,12 +14,12 @@ public class NoteController {
     @Autowired
     private NoteServImp noteServ;
 
-    @PutMapping(value = "/addNote")
+    @PostMapping(value = "/addNote")
     public Note addNote(@RequestBody Note note) {
         return noteServ.ajouter_NOTE(note);
     }
 
-    @PutMapping(value = "/addListNotes")
+    @PostMapping(value = "/addListNotes")
     public List<Note> addListNotes(@RequestBody List<Note> notes){
         return noteServ.addlistNotes(notes);
     }
