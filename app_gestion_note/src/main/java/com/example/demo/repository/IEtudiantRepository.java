@@ -11,8 +11,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IEtudiantRepository extends CrudRepository<Etudiant, Long>{
-	@Query("SELECT etd FROM Etudiant etd WHERE etd.classe.idclasse = :idClasse")
+	@Query("SELECT e FROM Etudiant e WHERE e.classe.idclasse = :idClasse")
 	List<Etudiant> findByClasse(@Param("idClasse") Long idClasse);
+
 
 }
 
