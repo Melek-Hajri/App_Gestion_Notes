@@ -57,5 +57,10 @@ private IClasseRepository classerep;
 		return specRep.save(m);
 		
 	}
+	
+	@Override
+	public List<Specialite> findByClasse(Long idClasse){
+		return (List<Specialite>) specRep.findByClasse(idClasse);
+	}
 
 }

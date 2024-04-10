@@ -54,7 +54,7 @@ public class Etudiant implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	//@JsonBackReference
 	Classe classe;
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("etudiant")
 	//@JsonManagedReference
 	@ToString.Exclude
@@ -70,6 +70,9 @@ public class Etudiant implements Serializable{
 		this.email = email;
 		this.nom = nom;
 		this.prenom = prenom;
+	}
+	public void setClasseToNull() {
+	    this.classe = null;
 	}
 	
 }

@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,6 +27,12 @@ public class Specialite {
     private Long idSpecialite;
 	private String nomSpecialite;
 	@ManyToOne
-	@JsonIgnore
+	@JsonIgnoreProperties("listeSpecialites")
 	private Classe C2;
+	
+
+	public void setClasseToNull() {
+	    this.C2 = null;
+	}
+	
 }

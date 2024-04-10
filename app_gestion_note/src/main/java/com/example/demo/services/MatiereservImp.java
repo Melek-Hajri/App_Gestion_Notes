@@ -63,12 +63,11 @@ private INoteRepository noteRepo;
 	}
 
 	@Override
-	public Matiere addMatiereModule(Matiere m, Long idmodule) {
-			Module c = modrep.findById(idmodule).get();
-			m.setM(c);
-
-
-		return matRep.save(m);
+	public void addMatiereModule(Long idmat, Long idmodule) {
+		Module c = modrep.findById(idmodule).get();
+		Matiere m = matRep.findById(idmat).get();
+		m.setM(c);
+		matRep.save(m);
 	}
 
 

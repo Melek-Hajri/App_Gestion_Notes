@@ -46,10 +46,10 @@ public class matiereController {
 		return matserv.getmatierebyid(id);
 	}
 
-	@PostMapping(value = "/addModuleMatiere/{id}")
-	public Matiere addmoduleMatiere(@RequestBody Matiere m,@PathVariable("id")Long id) {
+	@PutMapping(value = "/addModuleMatiere/{idmat}/{id}")
+	public void addmoduleMatiere(@PathVariable("idmat") Long idmat,@PathVariable("id")Long id) {
 		
-			return matserv.addMatiereModule(m, id);
+		matserv.addMatiereModule(idmat, id);
 		
 	}
 

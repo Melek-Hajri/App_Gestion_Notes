@@ -14,4 +14,5 @@ public interface IModuleServ {
 	public List<Module> getAllModules();
 	//module classe
 	public Module addModuleclasse(Module m, Long idclasse);
+	public List<Module> findByClasse(Long idClasse);
 }

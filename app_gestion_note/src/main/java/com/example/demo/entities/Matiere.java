@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,7 +27,7 @@ public class Matiere {
 	private String nomMatiere;
 	private Long CoifMatiere;
 	@ManyToOne
-	@JsonIgnore
+	@JsonIgnoreProperties("listeMatieres")
 	private Module M;
 	
 

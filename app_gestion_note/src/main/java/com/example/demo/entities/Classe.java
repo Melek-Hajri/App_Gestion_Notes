@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -32,13 +33,13 @@ public class Classe implements Serializable {
 	private int niveauClasse;
 	
 	@OneToMany(mappedBy = "C")
-	@JsonIgnore
+	@JsonIgnoreProperties("C")
 	@ToString.Exclude
 	private List<Module> listeModules;
 	
 	
 	@OneToMany(mappedBy = "C2")
-	@JsonIgnore
+	@JsonIgnoreProperties("C2")
 	@ToString.Exclude
 	private List<Specialite> listeSpecialites;
 	

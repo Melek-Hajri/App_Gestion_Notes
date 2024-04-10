@@ -2,6 +2,8 @@ package com.example.demo.services;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.example.demo.entities.Module;
 import com.example.demo.entities.Specialite;
 
@@ -15,4 +17,5 @@ public interface IspecServ {
 	public List<Specialite> getAllSpecialite();
 	
 	public Specialite addSpecialiteclasse(Specialite m, Long idclasse);
+	public List<Specialite> findByClasse(Long idClasse);
 }

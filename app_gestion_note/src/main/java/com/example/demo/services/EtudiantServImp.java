@@ -53,24 +53,19 @@ public class EtudiantServImp implements IEtudiantServ{
 	
 	@Override
     public void modifier_ETD(Long id, Etudiant updatedEtd) {
-        Optional<Etudiant> optionalEtd = etudiantRepo.findById(id);
-        if (optionalEtd.isPresent()) {
-            Etudiant existingEtd = optionalEtd.get();
+        Etudiant Etd = etudiantRepo.findById(id).get();
 
-            existingEtd.setCin(updatedEtd.getCin());
-            existingEtd.setDaten(updatedEtd.getDaten());
-            existingEtd.setLieun(updatedEtd.getLieun());
-            existingEtd.setAdresse(updatedEtd.getAdresse());
-            existingEtd.setTel(updatedEtd.getTel());
-            existingEtd.setEmail(updatedEtd.getEmail());
-            existingEtd.setNom(updatedEtd.getNom());
-            existingEtd.setPrenom(updatedEtd.getPrenom());
-            //existingEtd.setClasse(updatedEtd.getClasse());
-            existingEtd.setNotes(updatedEtd.getNotes());
-            etudiantRepo.save(existingEtd);
-        } else {
-            // Handle the case where the student with the given id does not exist
-        }
+        Etd.setCin(updatedEtd.getCin());
+        Etd.setDaten(updatedEtd.getDaten());
+        Etd.setLieun(updatedEtd.getLieun());
+        Etd.setAdresse(updatedEtd.getAdresse());
+        Etd.setTel(updatedEtd.getTel());
+        Etd.setEmail(updatedEtd.getEmail());
+        Etd.setNom(updatedEtd.getNom());
+        Etd.setPrenom(updatedEtd.getPrenom());
+        //existingEtd.setClasse(updatedEtd.getClasse());
+        Etd.setNotes(updatedEtd.getNotes());
+        etudiantRepo.save(Etd);
     }
 	@Override
 	public void affecter_ETD_CLASSE(Long idETD, Long idCLASSE) {

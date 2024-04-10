@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -32,12 +33,18 @@ public class Module implements Serializable{
 	private int CoifModule;
 	
 	@OneToMany(mappedBy = "M")
-	@JsonIgnore
+	@JsonIgnoreProperties("M")
 	@ToString.Exclude
 	private List<Matiere> listeMatieres;
 	
 	
 	@ManyToOne
-	@JsonIgnore
+	@JsonIgnoreProperties("listeModules")
 	private Classe C;
+	
+
+	public void setClasseToNull() {
+	    this.C = null;
+	}
+	
 }

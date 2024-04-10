@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Classe;
+import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Module;
+import com.example.demo.entities.Note;
 import com.example.demo.entities.Specialite;
 import com.example.demo.repository.IClasseRepository;
+import com.example.demo.repository.IEtudiantRepository;
 import com.example.demo.repository.IModuleRepository;
 import com.example.demo.repository.ISpecialiteRepository;
 
@@ -20,6 +23,9 @@ private IClasseRepository classerep;
 private IModuleRepository modulerep;
 @Autowired
 private ISpecialiteRepository specrep;
+@Autowired
+private IEtudiantRepository etdRepo;
+
 	@Override
 	public Classe addClasse(Classe u) {
 		
@@ -46,7 +52,13 @@ private ISpecialiteRepository specrep;
 
 	@Override
 	public void DeleteClasse(Long idclasse) {
-       classerep.deleteById(idclasse);		
+		for(Etudiant etd: etdRepo.findByClasse(idclasse))
+			etd.setClasseToNull();
+		for(Module etd: modulerep.findByClasse(idclasse))
+			etd.setClasseToNull();
+		for(Specialite etd: specrep.findByClasse(idclasse))
+			etd.setClasseToNull();
+		classerep.deleteById(idclasse);		
 	}
 
 	@Override
