@@ -51,13 +51,18 @@ public class NoteServImp implements INoteServ{
         }
 	}
 	@Override
-	public List<Note> afficher_Note_ETDCLASSE(Long idEtd, Long idClasse){
+	public List<Note> afficher_Note_ETDMATIERE(Long idEtd, Long idClasse){
 		List<Note> notes = (List<Note>) noteRepo.findByEtdMatiere(idEtd, idClasse);
 		return notes;
 	}
 	@Override 
 	public List<Note> NotesByEtd(Long idEtd){
 		return (List<Note>) noteRepo.findByEtd(idEtd);
+	}
+	
+	@Override
+	public List<Note> findByClasse(Long idClasse){
+		return (List<Note>) noteRepo.findByClasse(idClasse);
 	}
 
 }

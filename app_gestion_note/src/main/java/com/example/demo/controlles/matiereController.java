@@ -52,5 +52,9 @@ public class matiereController {
 		matserv.addMatiereModule(idmat, id);
 		
 	}
+	@GetMapping(value = "/getMatiereByMod/{idMOD}")
+	public List<Matiere> getMatiereByMod(@PathVariable("idMOD")Long idMOD){
+		return matserv.getByModule(idMOD);
+	}
 
 }

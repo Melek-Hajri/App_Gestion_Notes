@@ -12,6 +12,6 @@ public interface IMatiereServ {
 	public Matiere UpdateMatiere(Matiere c,Long id);
     public void DeleteMatiere(Long id);
 	public List<Matiere> getAllMatieres();
-	
+	public List<Matiere> getByModule(Long idMod);
 	public void addMatiereModule(Long idmat, Long idmodule);
 }

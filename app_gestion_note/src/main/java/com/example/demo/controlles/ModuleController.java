@@ -54,4 +54,8 @@ public class ModuleController {
 			return modServ.addModuleclasse(m, id);
 		
 	}
+	@GetMapping(value = "/getModuleByClasse/{idCLASSE}")
+	public List<Module> getModuleByClasse(@PathVariable("idCLASSE")Long idCLASSE){
+		return modServ.findByClasse(idCLASSE);
+	}
 }

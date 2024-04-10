@@ -44,8 +44,16 @@ public class NoteController {
         noteServ.modifier_NOTE(id, updatedNote);
     }
 
-    @GetMapping(value = "/getNotesByEtudiantAndClasse/{idEtd}/{idClasse}")
-    public List<Note> getNotesByEtudiantAndClasse(@PathVariable("idEtd") Long idEtd, @PathVariable("idClasse") Long idClasse) {
-        return noteServ.afficher_Note_ETDCLASSE(idEtd, idClasse);
+    @GetMapping(value = "/getNotesByEtudiantAndMatiere/{idEtd}/{idMatiere}")
+    public List<Note> getNotesByEtudiantAndMatiere(@PathVariable("idEtd") Long idEtd, @PathVariable("idMatiere") Long idMatiere) {
+        return noteServ.afficher_Note_ETDMATIERE(idEtd, idMatiere);
+    }
+    @GetMapping(value = "/getNotesByEtudiant/{idEtd}")
+    public List<Note> getNotesByEtudiantAndMatiere(@PathVariable("idEtd") Long idEtd) {
+        return noteServ.NotesByEtd(idEtd);
+    }
+    @GetMapping(value = "/getNotesByClasse/{idClasse}")
+    public List<Note> getNotesByClasse(@PathVariable("idClasse") Long idClasse) {
+        return noteServ.findByClasse(idClasse);
     }
 }

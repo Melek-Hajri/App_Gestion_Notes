@@ -69,6 +69,11 @@ private INoteRepository noteRepo;
 		m.setM(c);
 		matRep.save(m);
 	}
+	@Override
+	public List<Matiere> getByModule(Long idMod) {
+		return (List<Matiere>) matRep.findByModule(idMod);
+	}
+
 
 
 }

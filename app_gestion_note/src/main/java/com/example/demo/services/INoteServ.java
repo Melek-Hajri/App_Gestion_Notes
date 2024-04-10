@@ -2,6 +2,8 @@ package com.example.demo.services;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Note;
 
@@ -13,6 +15,7 @@ public interface INoteServ {
 	public void supprimer_NOTE(Long id);
 	public List<Note> afficher_NOTE();
 	public void modifier_NOTE(Long id, Note updatedNote);
-	public List<Note> afficher_Note_ETDCLASSE(Long idEtd, Long idClasse);
+	public List<Note> afficher_Note_ETDMATIERE(Long idEtd, Long idClasse);
 	public List<Note> NotesByEtd(Long idEtd);
+	public List<Note> findByClasse(Long idClasse);
 }
