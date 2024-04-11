@@ -43,8 +43,7 @@ public class Note implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	//@JsonBackReference
 	Matiere matiere;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties("notes")
-	@JsonBackReference
+	@ManyToOne
+	@JsonIgnoreProperties({"notes", "classe"})
 	Etudiant etudiant;
 }

@@ -56,4 +56,12 @@ public class NoteController {
     public List<Note> getNotesByClasse(@PathVariable("idClasse") Long idClasse) {
         return noteServ.findByClasse(idClasse);
     }
+    @PutMapping(value = "/addEtudiantToNote/{idNote}/{idEtd}")
+    public void addEtudiant(@PathVariable("idNote") Long idNote, @PathVariable("idEtd") Long idEtd) {
+        noteServ.addEtudiant(idNote, idEtd);
+    }
+    @PutMapping(value = "/addMatiereToNote/{idNote}/{idMat}")
+    public void addMatiere(@PathVariable("idNote") Long idNote, @PathVariable("idMat") Long idMat) {
+        noteServ.addMatiere(idNote, idMat);
+    }
 }

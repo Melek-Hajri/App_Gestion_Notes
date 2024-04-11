@@ -33,7 +33,7 @@ public class Classe implements Serializable {
 	private int niveauClasse;
 	
 	@OneToMany(mappedBy = "C")
-	@JsonIgnoreProperties("C")
+	@JsonIgnoreProperties("c")
 	@ToString.Exclude
 	private List<Module> listeModules;
 	

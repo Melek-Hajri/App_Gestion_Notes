@@ -33,7 +33,7 @@ public class Module implements Serializable{
 	private int CoifModule;
 	
 	@OneToMany(mappedBy = "M")
-	@JsonIgnoreProperties("M")
+	@JsonIgnoreProperties("m")
 	@ToString.Exclude
 	private List<Matiere> listeMatieres;
 	

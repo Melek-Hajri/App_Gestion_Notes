@@ -18,4 +18,6 @@ public interface INoteServ {
 	public List<Note> afficher_Note_ETDMATIERE(Long idEtd, Long idClasse);
 	public List<Note> NotesByEtd(Long idEtd);
 	public List<Note> findByClasse(Long idClasse);
+	public void addEtudiant(Long idNote, Long idEtd);
+	public void addMatiere(Long idNote, Long idMat);
 }

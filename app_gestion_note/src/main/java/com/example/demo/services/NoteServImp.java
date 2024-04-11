@@ -7,13 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Etudiant;
+import com.example.demo.entities.Matiere;
+import com.example.demo.entities.Module;
 import com.example.demo.entities.Note;
+import com.example.demo.repository.IEtudiantRepository;
+import com.example.demo.repository.IMatiereRepository;
 import com.example.demo.repository.INoteRepository;
 
 @Service
 public class NoteServImp implements INoteServ{
 	@Autowired
 	INoteRepository noteRepo;
+	@Autowired
+	IEtudiantRepository etdRepo;
+	@Autowired
+	IMatiereRepository matRepo;
 	
 	@Override
 	public Note ajouter_NOTE (Note note) {
@@ -63,6 +71,22 @@ public class NoteServImp implements INoteServ{
 	@Override
 	public List<Note> findByClasse(Long idClasse){
 		return (List<Note>) noteRepo.findByClasse(idClasse);
+	}
+	
+	@Override
+	public void addEtudiant(Long idNote, Long idEtd) {
+		Note n = noteRepo.findById(idNote).get();
+		Etudiant etd = etdRepo.findById(idEtd).get();
+		n.setEtudiant(etd);
+		noteRepo.save(n);
+	}
+	
+	@Override
+	public void addMatiere(Long idNote, Long idMat) {
+		Note n = noteRepo.findById(idNote).get();
+		Matiere m = matRepo.findById(idMat).get();
+		n.setMatiere(m);
+		noteRepo.save(n);
 	}
 
 }

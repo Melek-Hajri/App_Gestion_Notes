@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -54,13 +55,12 @@ public class Etudiant implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	//@JsonBackReference
 	Classe classe;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("etudiant")
-	//@JsonManagedReference
+	@OneToMany(mappedBy = "etudiant")
+	@JsonIgnoreProperties({"etudiant"})
 	@ToString.Exclude
-	Set <Note> notes;
+	List<Note> notes;
 	
-	public Etudiant(int cin, Date daten, String lieun, String adresse, int tel, String email, String nom,
+	/*public Etudiant(int cin, Date daten, String lieun, String adresse, int tel, String email, String nom,
 			String prenom) {
 		this.cin = cin;
 		this.daten = daten;
@@ -70,7 +70,7 @@ public class Etudiant implements Serializable{
 		this.email = email;
 		this.nom = nom;
 		this.prenom = prenom;
-	}
+	}*/
 	public void setClasseToNull() {
 	    this.classe = null;
 	}
