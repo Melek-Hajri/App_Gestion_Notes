@@ -25,7 +25,7 @@ public class Matiere {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMatiere;
 	private String nomMatiere;
-	private Long CoifMatiere;
+	private int CoifMatiere;
 	@ManyToOne
 	@JsonIgnoreProperties("listeMatieres")
 	private Module M;
