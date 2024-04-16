@@ -46,17 +46,12 @@ public class NoteServImp implements INoteServ{
 	}
 	@Override
 	public void modifier_NOTE(Long id, Note updatedNote) {
-		Optional<Note> optionalNote = noteRepo.findById(id);
-        if (optionalNote.isPresent()) {
-            Note existingNote = optionalNote.get();
-
-            existingNote.setType(updatedNote.getType());
-            //existingNote.setMatiere(updatedNote.getMatiere());
-            existingNote.setEtudiant(updatedNote.getEtudiant());
-            noteRepo.save(existingNote);
-        } else {
-            // Handle the case where the student with the given id does not exist
-        }
+		Note n = noteRepo.findById(id).get();
+		n.setType(updatedNote.getType());
+		n.setNote(updatedNote.getNote());
+		n.setMatiere(updatedNote.getMatiere());
+        n.setEtudiant(updatedNote.getEtudiant());
+        noteRepo.save(n);
 	}
 	@Override
 	public List<Note> afficher_Note_ETDMATIERE(Long idEtd, Long idClasse){
