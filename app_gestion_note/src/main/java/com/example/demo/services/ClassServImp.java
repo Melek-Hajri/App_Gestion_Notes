@@ -16,6 +16,7 @@ import com.example.demo.repository.IModuleRepository;
 import com.example.demo.repository.ISpecialiteRepository;
 
 @Service
+
 public class ClassServImp implements IClasseServ{
 @Autowired
 private IClasseRepository classerep;
@@ -28,7 +29,7 @@ private IEtudiantRepository etdRepo;
 
 	@Override
 	public Classe addClasse(Classe u) {
-		
+        validateClasse(u); 
 		return classerep.save(u);
 	}
 
@@ -44,6 +45,7 @@ private IEtudiantRepository etdRepo;
 
 	@Override
 	public Classe UpdateClasse(Classe c, Long idclasse) {
+        validateClasse(c); // Valider la classe avant l'ajout
 		Classe Cl=classerep.findById(idclasse).get();
 		Cl.setNomClasse(c.getNomClasse());
 		Cl.setNiveauClasse(c.getNiveauClasse());
@@ -121,5 +123,10 @@ private IEtudiantRepository etdRepo;
         }
     }
 
-
+ // Méthode de validation personnalisée pour vérifier la non-nullité des champs de la classe
+    private void validateClasse(Classe classe) {
+        if (classe == null || classe.getNomClasse() == null || classe.getNiveauClasse() == 0) {
+            throw new IllegalArgumentException("Les champs de la classe ne peuvent pas être nuls.");
+        }
+    }
 }

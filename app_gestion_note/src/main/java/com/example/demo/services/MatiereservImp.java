@@ -25,8 +25,7 @@ private INoteRepository noteRepo;
 
 	@Override
 	public Matiere addMatiere(Matiere u) {
-		
-	    
+        validateMatiere(u); // Valider la matière avant l'ajout
 		return matRep.save(u);
 	}
 
@@ -50,6 +49,7 @@ private INoteRepository noteRepo;
 
 	@Override
 	public Matiere UpdateMatiere(Matiere c, Long id) {
+        validateMatiere(c); // Valider la matière avant l'ajout
 		Matiere Cl = matRep.findById(id).get();
 		Cl.setNomMatiere(c.getNomMatiere());
 		Cl.setCoifMatiere(c.getCoifMatiere());
@@ -73,6 +73,13 @@ private INoteRepository noteRepo;
 	public List<Matiere> getByModule(Long idMod) {
 		return (List<Matiere>) matRep.findByModule(idMod);
 	}
+	 // Méthode de validation pour vérifier que le coefficient de matière est strictement positif
+    private void validateMatiere(Matiere matiere) {
+        if (matiere.getCoifMatiere() <= 0) {
+            throw new IllegalArgumentException("Le coefficient de la matière doit être strictement positif.");
+        }
+    }
+
 
 
 
