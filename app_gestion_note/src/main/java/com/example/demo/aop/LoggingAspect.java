@@ -10,11 +10,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
+	  private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
+
 	 @Before("execution(* com.example.demo.services.*.*(..))")
 	    public void logBeforeExecution() {
-	        System.out.println("Method execution started...");
+		 logger.info("Method execution started...");
 	    }
-	  private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
 	    @After("execution(* com.example.demo.services.*.*(..))")
 	    public void logAfter(JoinPoint joinPoint) {
