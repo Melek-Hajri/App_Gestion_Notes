@@ -73,7 +73,8 @@ public class EmployeeService {
     	String messageBody = "Cher(e) " + employee.getFirstname() + ",\n\n" +
     		    "Nous sommes ravis de vous accueillir sur Enicar notes. Voici les informations de connexion à votre compte :\n\n" +
     		    "- Nom d'utilisateur :" + employee.getLogin() + "\n" +
-    		    "- Mot de passe :" + employee.getPassword() + "\n\n" +
+    		    "- Mot de passe :" + employee.getPassword() + "\n" +
+    		    "- Role : "+employee.getRole()+"\n\n"+
     		    "Veuillez conserver ces informations en lieu sûr et ne les partager avec personne. Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter à l'adresse dhaouadi.hazem567@gmail.com.\n\n" +
     		    "Nous vous recommandons également de prendre quelques instants pour vérifier et mettre à jour vos informations de sécurité, notamment en activant l'authentification à deux facteurs si ce n'est pas déjà fait.\n\n" +
     		    "Merci de votre confiance et de votre soutien à Enicar notes !\n\n" +
