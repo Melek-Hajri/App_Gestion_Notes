@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 	  private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
-
+	 //comment before
 	 @Before("execution(* com.example.demo.services.*.*(..))")
 	    public void logBeforeExecution() {
 		 logger.info("Method execution started...");
